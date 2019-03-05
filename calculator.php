@@ -15,9 +15,9 @@ class Calculator {
             $arg = explode(",", $arguments[2]);
             foreach($arg as $key => $value) {
                 if(is_numeric($value)) {
-                    $this->sum+= $value;
+                    $this->sum += $value;
                 } else {
-                    echo "\nThis is not numeric value". $value;
+                    $this->calculate("n", $value);
                 }
             }
             break;
@@ -26,6 +26,18 @@ class Calculator {
 
     public function getSum() {
         return $this->sum;
+    }
+
+    private function calculate($delmiter, $args) {
+        $explodeArr = explode($delmiter, $args);
+
+        foreach($explodeArr as $key => $value) {
+            if(is_numeric($value)) {
+                $this->sum += $value;
+            } else {
+                echo "\nThis is not numeric value". $value;
+            }
+        }
     }
 }
 
